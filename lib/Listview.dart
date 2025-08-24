@@ -71,11 +71,20 @@ class Listview extends StatelessWidget {
               color: const Color.fromARGB(255, 173, 214, 23),
               child: Row(
                 children: [
-                  Image.network(
-                    heros[index]['image']!,
-                    height: 150,
-                    width: 150,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.network(
+                      heros[index]['image']!,
+                      height: 150,
+                      width: 150,
+                      fit: BoxFit.cover,
+                    ),
                   ),
+                  // Image.network(
+                  //   heros[index]['image']!,
+                  //   height: 150,
+                  //   width: 150,
+                  // ),
                   SizedBox(width: 20),
                   Text(heros[index]['name']!, style: TextStyle(
                     fontWeight: FontWeight.bold,

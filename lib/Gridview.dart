@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_assignment_6/Singleitem.dart';
 class Gridview extends StatelessWidget {
   const Gridview({super.key});
 
@@ -48,7 +48,58 @@ class Gridview extends StatelessWidget {
         ),),
         backgroundColor: const Color.fromARGB(255, 85, 148, 133),
       ),
-      body: Text('Gridview')
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+        ),
+        itemCount: heros.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (context) => Singleitem(
+                        image: heros[index]['image']!,
+                        name: heros[index]['name']!,
+                      ),
+                ),
+              );
+            },
+            child: Card(
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.network(
+                      heros[index]['image']!,
+                      height: 150,
+                      width: 150,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    heros[index]['name']!,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 }

@@ -19,7 +19,16 @@ class Singleitem extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.network(image, height: 200,),
+                    ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.network(
+                      image,
+                      height: 250,
+                      width: 250,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+              // Image.network(image, height: 200,),
               SizedBox(height: 30,),
               Text(name, style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),)
             ],
